@@ -1,0 +1,22 @@
+
+plantstest <- Dataset_R_2020
+
+col_name <- #whatever we can use to get just the first row of the dataset
+  
+  names (plants) <- col_name
+
+# what is the difference between long and wide formats, subsetting etc. 
+# we want to diffrenciate PLANT SPECIES 
+
+
+plantstest %>% scale() %>% prcomp() -> pca                         # Do PCA and store result as `pca`
+
+# now display the results from the PCA analysis
+pca
+
+
+# add species information back into PCA data
+pca_data <- data.frame(pca$x, Species=iris$Species)
+head(pca_data)
+
+ggplot(pca_data, aes(x=PC1, y=PC2)) + geom_point()
